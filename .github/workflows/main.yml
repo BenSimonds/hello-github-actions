@@ -9,6 +9,11 @@ jobs:
      - uses: actions/checkout@v1
      - name: show ref
        run: echo $GITHUB_REF
+     - name: get version
+       id: get_version
+       run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+     - name: show_version
+       run: echo $VERSION
      - uses: ./action-a
        with:
          MY_NAME: "Ben"
